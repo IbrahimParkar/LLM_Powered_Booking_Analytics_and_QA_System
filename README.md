@@ -1,9 +1,4 @@
 # LLM_Powered_Booking_Analytics_and_QA_System
-Here's the updated **README** with the mention of downloading the **FAISS index** file from Google Drive:
-
----
-
-# Booking Analytics System
 
 ## Overview
 This project implements a booking analytics and QA system using Python. It includes data preprocessing, analytics, and reporting on various key booking metrics. The system provides insights on revenue trends, cancellation rates, geographical distribution of users, and more.
