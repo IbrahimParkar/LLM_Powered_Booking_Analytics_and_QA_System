@@ -1,0 +1,123 @@
+1. /health Endpoint
+
+curl http://127.0.0.1:5000/health
+# Response:
+# {
+#   "message": "All systems operational",
+#   "status": "healthy"
+# }
+
+
+2. /analytics Endpoint (Request)
+curl -X POST http://127.0.0.1:5000/analytics
+# Response:
+# {
+#   "average_daily_rate": 101.83112153446686,
+#   "average_lead_time": 104.01141636652986,
+#   "cancellation_rate": 37.041628277075134,
+#   "max_lead_time": 737.0,
+#   "total_bookings": 119390.0,
+#   "total_revenue": 55850713.42999999
+# }
+
+
+3. /ask Endpoint Sample Queries
+# Example 1: Numerical Query - Total Revenue
+curl -X POST http://localhost:5000/ask -H "Content-Type: application/json" -d "{\"query\": \"What is the total revenue?\"}"
+# Response: The value of total revenue is 55850713.43.
+
+# Example 2: Numerical Query - Cancellation Rate
+curl -X POST http://localhost:5000/ask -H "Content-Type: application/json" -d "{\"query\": \"What is the cancellation rate?\"}"
+# Response: The value of cancellation rate is 37.04.
+
+# Example 3: Numerical Query - Average Lead Time
+curl -X POST http://localhost:5000/ask -H "Content-Type: application/json" -d "{\"query\": \"What is the average lead time?\"}"
+# Response: The value of average lead time is 104.01.
+
+# Example 4: Numerical Query - Average Daily Rate
+curl -X POST http://localhost:5000/ask -H "Content-Type: application/json" -d "{\"query\": \"What is the average daily rate?\"}"
+# Response: The value of average daily rate is 101.83.
+
+# Example 5: Numerical Query - Max Lead Time
+curl -X POST http://localhost:5000/ask -H "Content-Type: application/json" -d "{\"query\": \"What is the max lead time?\"}"
+# Response: The value of max lead time is 737.00.
+
+# Example 6: Numerical Query - Total Bookings
+curl -X POST http://localhost:5000/ask -H "Content-Type: application/json" -d "{\"query\": \"What is the number of total bookings?\"}"
+# Response: The value of total bookings is 119390.00.
+
+# Example 7: Semantic Query - Highest Booking Cancellations by Location (Top 5)
+curl -X POST http://localhost:5000/ask -H "Content-Type: application/json" -d "{\"query\": \"Which locations had the highest booking cancellations?\"}"
+# Response:
+# Portugal: 27519 cancellations
+# United Kingdom: 2453 cancellations
+# Spain: 2177 cancellations
+# France: 1934 cancellations
+# Italy: 1333 cancellations
+
+# Example 8: Semantic Query - Top 3 Locations with Highest Cancellations
+curl -X POST http://localhost:5000/ask -H "Content-Type: application/json" -d "{\"query\": \"Show me the top 3 locations with the highest cancellations.\"}"
+# Response:
+# Portugal: 27519 cancellations
+# United Kingdom: 2453 cancellations
+# Spain: 2177 cancellations
+
+# Example 9: Semantic Query - Top 2 Locations with Highest Cancellations
+curl -X POST http://localhost:5000/ask -H "Content-Type: application/json" -d "{\"query\": \"Show me the top two locations with the most cancellations.\"}"
+# Response:
+# Portugal: 27519 cancellations
+# United Kingdom: 2453 cancellations
+
+# Example 10: Monthly Revenue Query - July 2017
+curl -X POST http://localhost:5000/ask -H "Content-Type: application/json" -d "{\"query\": \"Show me total revenue for July 2017\"}"
+# Response: The total revenue for July 2017 is 1817038.23.
+
+# Example 11: Yearly Revenue Query - 2017
+curl -X POST http://localhost:5000/ask -H "Content-Type: application/json" -d "{\"query\": \"Show me total revenue for 2017\"}"
+# Response: The total revenue for 2017 is 9811199.87.
+
+# Example 12: Monthly Revenue Query - December 2018
+curl -X POST http://localhost:5000/ask -H "Content-Type: application/json" -d "{\"query\": \"What is the revenue for December 2018?\"}"
+# Response: No revenue data available for December 2018.
+
+# Example 13: Yearly Revenue Query - 2025
+curl -X POST http://localhost:5000/ask -H "Content-Type: application/json" -d "{\"query\": \"What is the total revenue for 2025?\"}"
+# Response: No revenue data available for 2025.
+
+# Example 14: Month with Most Revenue for 2019
+curl -X POST http://localhost:5000/ask -H "Content-Type: application/json" -d "{\"query\": \"Which month in 2019 had the highest revenue?\"}"
+# Response: No revenue data available for 2019.
+
+# Example 15: Top Cancellations - 1 Country with Most Cancellations
+curl -X POST http://localhost:5000/ask -H "Content-Type: application/json" -d "{\"query\": \"Show me the top 1 country with the most cancellations.\"}"
+# Response: Portugal: 27519 cancellations
+
+# Example 16: Non-Existent Data - Revenue for February 2030
+curl -X POST http://localhost:5000/ask -H "Content-Type: application/json" -d "{\"query\": \"What is the revenue for February 2030?\"}"
+# Response: No revenue data available for February 2030.
+
+# Example 17: Total Bookings from Portugal
+curl -X POST http://localhost:5000/ask -H "Content-Type: application/json" -d "{\"query\": \"What is the total number of bookings from Portugal?\"}"
+# Response: Total bookings from Portugal: 48590.
+
+# Example 18: Most Booked Country
+curl -X POST http://localhost:5000/ask -H "Content-Type: application/json" -d "{\"query\": \"Show countries with most bookings?\"}"
+# Response:
+# Portugal: 48590 bookings
+# United Kingdom: 12129 bookings
+# France: 10415 bookings
+# Spain: 8568 bookings
+# Germany: 7287 bookings
+
+# Example 19: Top Busiest Months by Booking Percentage
+curl -X POST http://localhost:5000/ask -H "Content-Type: application/json" -d "{\"query\": \"Show me the top 5 busiest months by booking percentage.\"}"
+# Response:
+# May 2017: 5.29%
+# October 2016: 5.20%
+# April 2017: 4.74%
+# June 2017: 4.73%
+# May 2016: 4.59%
+
+# Example 20: Invalid Query - Color of Restaurant
+curl -X POST http://localhost:5000/ask -H "Content-Type: application/json" -d "{\"query\": \"Color of restaurant?\"}"
+# Response: Query not recognized.
