@@ -1,9 +1,62 @@
 # LLM_Powered_Booking_Analytics_and_QA_System
+Here's the updated **README** with the mention of downloading the **FAISS index** file from Google Drive:
+
+---
+
+# Booking Analytics System
 
 ## Overview
 This project implements a booking analytics and QA system using Python. It includes data preprocessing, analytics, and reporting on various key booking metrics. The system provides insights on revenue trends, cancellation rates, geographical distribution of users, and more.
 
 ## Getting Started
+
+### Simple Guide
+
+1. **Clone or Download the Repository**:
+   - Clone the repository using:
+     ```bash
+     git clone https://github.com/your-username/repository-name.git
+     ```
+   - Or download the repository as a ZIP file and extract it to your preferred location.
+
+2. **Install Dependencies**:
+   - Install the required packages by running the following command in the project directory:
+     ```bash
+     pip install -r requirements.txt
+     ```
+
+3. **Download the FAISS Index**:
+   - Since the `booking_faiss.index` file is too large to upload to GitHub, you can download it from [this Google Drive link](https://drive.google.com/file/d/1ahh4ub5kUiZnmz2ZN6RP77yuOI1xBVoX/view?usp=sharing).
+   - After downloading, place the `booking_faiss.index` file in the project directory.
+
+4. **Run `app.py`**:
+   - Start the Flask web server by running:
+     ```bash
+     python app.py
+     ```
+
+5. **Test the API**:
+   - After running `app.py`, you can test the API using `curl` in your terminal.
+   - For `/health` (GET), run:
+     ```bash
+     curl http://127.0.0.1:5000/health
+     ```
+   - For `/analytics` (POST), run:
+     ```bash
+     curl -X POST http://127.0.0.1:5000/analytics
+     ```
+   - For `/ask` (POST), run:
+     ```bash
+     curl -X POST http://localhost:5000/ask -H "Content-Type: application/json" -d "{\"query\": \"What is the total revenue for July 2017?\"}"
+     ```
+
+6. **Sample Queries**:
+   - The `Sample Queries.txt` file contains **20 sample queries** that you can copy and paste to test the `/ask` endpoint.
+
+---
+
+### Detailed Guide
+
 1. **Clone or Download the Repository**:
    - To get started, **clone** the repository using Git:
      ```bash
@@ -105,5 +158,6 @@ This project implements a booking analytics and QA system using Python. It inclu
 - `RAG.py`: Handles the retrieval-augmented generation (RAG) system, embedding creation, and database generation.
 - `app.py`: Implements a Flask API for accessing analytics and QA system through a local server.
 - `Sample Queries.txt`: Contains **20 sample queries** along with their answers to test the system.
+- `booking_faiss.index`: The FAISS index storing embeddings (download from [Google Drive](https://drive.google.com/file/d/1ahh4ub5kUiZnmz2ZN6RP77yuOI1xBVoX/view?usp=sharing)).
 - `analytics.db`: The SQLite database containing analytics tables.
 - `requirements.txt`: A list of required dependencies for the project.
