@@ -68,7 +68,7 @@ This project implements a booking analytics and QA system using Python. It inclu
    - This will install all the packages required to run the project.
 
 3. **Run `Preprocessing_and_Analytics.py`**:
-   - This script handles data preprocessing and analytics. It directly downloads the dataset (`hotel_bookings.csv`) and processes the data to generate insights.
+   - This script handles data preprocessing and analytics. It processes the data to generate insights.
    - It will create the following analytics reports:
      - Revenue trends over time
      - Cancellation rate as a percentage of total bookings
